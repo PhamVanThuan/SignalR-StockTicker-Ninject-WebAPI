@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+	<button id="closeMarket">Close Market</button>
+	<div id="closeResult"></div>
+</body>
+</html>
+
+<script src="SignalR.StockTicker/jquery-1.10.2.min.js"></script>
+<script>
+	$(function () {
+		var $closeResult = $('#closeResult');
+		$('#closeMarket').click(function() {
+			$.get("api/StockApi")
+			.done(function() {
+				$closeResult.text('Good');
+			})
+			.fail(function(e) {
+				$closeResult.text(e);
+			});
+		});
+	})
+</script>
